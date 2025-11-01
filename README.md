@@ -147,7 +147,7 @@ npm run dev
 ```
 ---
 
-## Environment Variable
+## 🔑 Environment Variable
 
 ```bash
 
@@ -158,3 +158,5 @@ JWT_SECRET=your_jwt_secret
 PORT=8080
 
 ```
+
+## 🧑‍💻 Author
