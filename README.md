@@ -111,8 +111,7 @@ diabetes-detection/
 ├── .gitignore                  # Ignored files for Git
 ├── README.md                   # Project documentation
 └── LICENSE                     # License file
-
-
+```
 ---
 
 ## ⚙️ Installation & Setup
@@ -123,3 +122,5 @@ diabetes-detection/
 git clone https://github.com/ChandraShekharSaini/diabetes-detection.git
 cd diabetes-detection
  add project structorte
+
+```
