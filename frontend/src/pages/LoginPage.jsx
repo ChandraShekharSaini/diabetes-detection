@@ -42,7 +42,7 @@ const LoginForm = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:3400/auth/google";
+    window.location.href = "https://diabetes-detection-g9hw-hg2i0v9ri-chandrashekharsainis-projects.vercel.app/auth/google";
   };
 
   return (

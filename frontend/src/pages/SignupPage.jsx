@@ -51,7 +51,7 @@ const SignupPage = () => {
   };
 
   const handleGoogleSignup = () => {
-    window.location.href = "http://localhost:3400/api/v1/auth/google";
+    window.location.href = "https://diabetes-detection-g9hw-hg2i0v9ri-chandrashekharsainis-projects.vercel.app/auth/google";
   };
 
   return (
