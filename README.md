@@ -132,13 +132,9 @@ cd server
 npm install
 npm start
 
-MONGO_URI=your_mongodb_connection_string
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-JWT_SECRET=your_jwt_secret
-PORT=8080
 
 ```
+
 
 ### 3️⃣ Setup the Frontend (React App)
 
