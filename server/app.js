@@ -9,7 +9,7 @@ DB();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [process.env.FRONTEND_ORIGIN],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -31,21 +31,30 @@ app.get(
 app.get(
   "/auth/google/callback",
   googleAuthentication.authenticate("google", {
-    failureRedirect: "http://localhost:5173/login",
+    failureRedirect: process.env.Failure_Redirect,
     session: false,
   }),
   function (req, res) {
-    const token = jsonwebtoken.sign({ user: req.user }, "897jkjhklj", {
-      expiresIn: "1hr",
-
-    });
+    const token = jsonwebtoken.sign(
+      { user: req.user },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1hr",
+      }
+    );
     console.log(token);
-    res.redirect(`http://localhost:5173?token=${token}`);
+    res.redirect(`${process.env.FRONTEND_ORIGIN}?token=${token}`);
   }
 );
 
 import userAuthRoutes from "./routes/userAuthRoutes.js";
 app.use("/api/v1/auth", userAuthRoutes);
+
+app.get("/", (req, res, next) => {
+  res.json({
+    message: "My Server is working",
+  });
+});
 
 app.listen(PORT, () => {
   console.log("http://localhost:", PORT);
