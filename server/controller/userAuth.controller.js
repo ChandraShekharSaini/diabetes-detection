@@ -4,8 +4,8 @@ import bcrypt from "bcryptjs";
 export const Login = async (req, res, next) => {
   console.log("---------------Login-------------------------------");
 
-  console.log(process.env.GOOGLE_CLIENT_SECRET);
-  console.log(process.env.GOOGLE_CALLBACK_URL);
+  console.log("Google Sectect",process.env.GOOGLE_CLIENT_SECRET);
+  console.log("gOOGLE cALLBACK",process.env.GOOGLE_CALLBACK_URL);
   try {
     const { email, password } = req.body;
 
