@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Mail, Lock, User, Loader2 } from "lucide-react";
 
 const SignupPage = () => {
   const navigate = useNavigate();
-    
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  console.log(formData);
-
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -21,6 +22,8 @@ const SignupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage("");
 
     try {
       const res = await fetch("http://localhost:3400/api/v1/auth/signup", {
@@ -30,69 +33,108 @@ const SignupPage = () => {
       });
 
       const data = await res.json();
+
       if (res.ok) {
         setMessage("✅ Signup successful!");
         setFormData({ name: "", email: "", password: "" });
-
-        navigate("/login");
+        setTimeout(() => navigate("/login"), 1500);
       } else {
         setMessage(`❌ ${data.message}`);
       }
     } catch (error) {
       console.error(error);
       setMessage("❌ Server error");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow-md w-80"
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 p-4">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md"
       >
-        <h2 className="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+          Create Account
+        </h2>
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full border p-2 mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          required
-        />
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Name Input */}
+          <div className="relative">
+            <User className="absolute left-3 top-3 text-gray-400" size={20} />
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+          </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full border p-2 mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          required
-        />
+          {/* Email Input */}
+          <div className="relative">
+            <Mail className="absolute left-3 top-3 text-gray-400" size={20} />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+          </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          className="w-full border p-2 mb-6 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          required
-        />
+          {/* Password Input */}
+          <div className="relative">
+            <Lock className="absolute left-3 top-3 text-gray-400" size={20} />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition"
-        >
-          Sign Up
-        </button>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full flex justify-center items-center bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            {loading ? <Loader2 className="animate-spin mr-2" /> : null}
+            {loading ? "Signing Up..." : "Sign Up"}
+          </button>
+        </form>
 
         {message && (
-          <p className="text-center mt-4 text-sm text-gray-700">{message}</p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center mt-4 text-sm text-gray-700"
+          >
+            {message}
+          </motion.p>
         )}
-      </form>
+
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Already have an account?{" "}
+          <span
+            onClick={() => navigate("/login")}
+            className="text-blue-600 hover:underline cursor-pointer"
+          >
+            Login
+          </span>
+        </p>
+      </motion.div>
     </div>
   );
 };
