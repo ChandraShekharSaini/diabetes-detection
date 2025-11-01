@@ -160,3 +160,16 @@ PORT=8080
 ```
 
 ## 🧑‍💻 Author
+
+👋 Chandra Shekhar Saini
+💼 Full-Stack Developer | React.js • Node.js • Spring Boot • MongoDB
+
+🌐 Portfolio: https://chandrashekharsaini.vercel.app
+
+💻 GitHub: @ChandraShekharSaini
+
+💼 LinkedIn: linkedin.com/in/chandrashekharsaini
+
+✉️ Email: chandrashekharsaini49@gmail.com
+
+“Building intelligent, scalable, and beautiful web solutions with creativity and clean code.”
