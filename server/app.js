@@ -9,7 +9,7 @@ DB();
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_ORIGIN],
+    origin: ["https://diabetes-detection-eta.vercel.app" ,"http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
