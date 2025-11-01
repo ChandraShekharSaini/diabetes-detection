@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, Loader2, Home } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
+import axios from 'axios'
 
 const SignupPage = () => {
   const navigate = useNavigate();
