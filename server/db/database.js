@@ -5,7 +5,7 @@ dotenv.config();
 
 export const DB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect("mongodb+srv://chandrashekharsaini322_db_user:red123@glucoai.kv4gm2r.mongodb.net/?appName=GlucoAI", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 10000, 
