@@ -1,6 +1,6 @@
 ---
 
-🔗 **Live Demo:** [https://frontend-five-gamma-26.vercel.app](https://diabetes-detection-eta.vercel.app)
+🔗 **Live Demo:** [https://diabetes-detection-eta.vercel.app/](https://diabetes-detection-eta.vercel.app)
 
 ---
 
