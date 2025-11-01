@@ -1,3 +1,10 @@
+---
+
+🔗 **Live Demo:** [https://frontend-five-gamma-26.vercel.app](https://frontend-five-gamma-26.vercel.app)
+
+---
+
+
 # 🩺 GlucoAI — Diabetes Detection and Prediction System
 
 **GlucoAI** is a full-stack web application that helps detect diabetes risk using **AI-powered machine learning models**.  
