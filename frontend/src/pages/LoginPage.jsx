@@ -19,7 +19,7 @@ const LoginForm = () => {
     setMessage("");
 
     try {
-      const res = await fetch("https://diabetes-detection-g9hw-hg2i0v9ri-chandrashekharsainis-projects.vercel.app/api/v1/auth/login", {
+      const res = await fetch("https://diabetes-detection-g9hw.vercel.app/api/v1/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -42,7 +42,7 @@ const LoginForm = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = "https://diabetes-detection-g9hw-hg2i0v9ri-chandrashekharsainis-projects.vercel.app/auth/google";
+    window.location.href = "https://diabetes-detection-g9hw.vercel.app/auth/google";
   };
 
   return (
