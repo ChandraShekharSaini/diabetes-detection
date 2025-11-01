@@ -60,3 +60,22 @@ The goal is to empower users to make data-driven health decisions with early det
 
 ## 📁 Project Structure
 
+diabetes-detection/
+│
+├── frontend/ # React + Tailwind frontend
+│ ├── src/
+│ │ ├── component/ # Navbar, Footer, AboutPage, Dashboard
+│ │ ├── pages/ # HomePage, LoginPage, SignupPage
+│ │ └── customComponeds/# Custom Hooks & Utils
+│ └── package.json
+│
+├── server/ # Node.js backend
+│ ├── authentication/ # Google OAuth Strategy
+│ ├── models/ # MongoDB models
+│ ├── routes/ # Express routes
+│ ├── utils/ # Helper functions
+│ └── server.js
+│
+├── .env # Environment variables (not committed)
+└── README.md
+
