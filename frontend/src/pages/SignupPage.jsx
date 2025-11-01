@@ -17,6 +17,7 @@ const SignupPage = () => {
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
+    const num = 90;
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -27,7 +28,7 @@ const SignupPage = () => {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:3400/api/v1/auth/signup", {
+      const res = await fetch("https://diabetes-detection-g9hw-hg2i0v9ri-chandrashekharsainis-projects.vercel.app/api/v1/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

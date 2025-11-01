@@ -19,7 +19,7 @@ const LoginForm = () => {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:3400/api/v1/auth/login", {
+      const res = await fetch("https://diabetes-detection-g9hw-hg2i0v9ri-chandrashekharsainis-projects.vercel.app/api/v1/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
