@@ -34,17 +34,17 @@ const SignupPage = () => {
         formData, 
         {
           headers: { "Content-Type": "application/json" },
-     
+    
      
         }
       );
 
-       console.log(res.data);
+       console.log(res);
 
       if (res.ok) {
         setMessage("✅ Signup successful!");
         setFormData({ name: "", email: "", password: "" });
-        setTimeout(() => navigate("/login"), 1500);
+        navigate("/login")
       } else {
         setMessage(`❌ ${data.message}`);
       }
