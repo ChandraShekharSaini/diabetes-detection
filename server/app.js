@@ -1,11 +1,12 @@
 import express from "express";
 import cors from "cors";
 import jsonwebtoken from "jsonwebtoken";
-
+import dotenv from "dotenv";
 import { DB } from "./db/database.js";
 const PORT = 3400;
 const app = express();
 
+dotenv.config();
 app.use(
   cors({
     origin: ["https://diabetes-detection-eta.vercel.app" ,"http://localhost:5173"],
@@ -15,12 +16,12 @@ app.use(
 );
 
 
-
-
 DB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
 
 import googleAuthentication from "./authentication/googleAutjentication.js";
 app.use(googleAuthentication.initialize());
