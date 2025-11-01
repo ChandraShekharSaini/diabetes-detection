@@ -6,14 +6,11 @@ import passportGenerator from "../utils/passwordGenerator.js";
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "659689354757-8979h4g39v1cu494l9ohann1crm0qb07.apps.googleusercontent.com",
-      clientSecret: "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",
-      callbackURL: "http://localhost:3400/auth/google/callback",
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
     },
     async function (accessToken, refreshToken, profile, cb) {
- 
- 
       try {
         const existedUser = await User.findOne({
           email: profile.emails[0].value,
