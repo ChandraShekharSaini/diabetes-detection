@@ -1,11 +1,10 @@
 import User from "../models/User.model.js";
+import bcrypt from "bcryptjs";
 
-export const Login = async (req, res ,next) => {
+export const Login = async (req, res, next) => {
   console.log("---------------Login-------------------------------");
   try {
     const { email, password } = req.body;
-
-  
 
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
@@ -16,7 +15,9 @@ export const Login = async (req, res ,next) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    if (user.password !== password) {
+    const validPassword = bcrypt.compareSync(password, user.password);
+
+    if (!validPassword) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
@@ -26,11 +27,10 @@ export const Login = async (req, res ,next) => {
   }
 };
 
-export const Signup = async (req, res ,next) => {
+export const Signup = async (req, res, next) => {
+  console.log("---------------SignUp-------------------------------");
 
-      console.log("---------------SignUp-------------------------------");
-
-      console.log(req.body);
+  console.log(req.body);
   try {
     const { name, email, password } = req.body;
 
@@ -38,13 +38,13 @@ export const Signup = async (req, res ,next) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // Check if email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already registered" });
     }
 
-    const newUser = new User({ name, email, password });
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
 
     res
