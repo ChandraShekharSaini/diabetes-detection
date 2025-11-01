@@ -14,7 +14,7 @@ app.use(
   })
 );
 
-app.options("*", cors());
+
 
 
 DB();
