@@ -5,7 +5,7 @@ dotenv.config()
 export const DB = () => {
   
   mongoose
-    .connect(process.env.MONGODB_URI)
+    .connect("mongodb+srv://chandrashekharsaini322_db_user:red123@glucoai.kv4gm2r.mongodb.net/?appName=GlucoAI")
     .then(() => {
       console.log("DB Conected");
     })
