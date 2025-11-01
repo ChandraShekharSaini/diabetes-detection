@@ -5,7 +5,6 @@ import jsonwebtoken from "jsonwebtoken";
 import { DB } from "./db/database.js";
 const PORT = 3400;
 const app = express();
-DB();
 
 app.use(
   cors({
@@ -14,6 +13,11 @@ app.use(
     credentials: true,
   })
 );
+
+app.options("*", cors());
+
+
+DB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
