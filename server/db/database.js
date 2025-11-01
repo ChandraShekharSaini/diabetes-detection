@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const DB = () => {
   mongoose
-    .connect("mongodb://127.0.0.1:27017/diabeticdetection")
+    .connect(process.env.MONGODB_URI)
     .then(() => {
       console.log("DB Conected");
     })
