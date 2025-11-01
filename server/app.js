@@ -52,6 +52,7 @@ app.get(
   }
 );
 
+
 import userAuthRoutes from "./routes/userAuthRoutes.js";
 app.use("/api/v1/auth", userAuthRoutes);
 

@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config()
 
 export const DB = () => {
-     console.log(process.env.MONGODB_URI);
+  
   mongoose
     .connect(process.env.MONGODB_URI)
     .then(() => {
