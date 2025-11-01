@@ -29,17 +29,16 @@ const SignupPage = () => {
     setMessage("");
 
     try {
-      const res = await axios.post(
-        "https://diabetes-detection-g9hw.vercel.app/api/v1/auth/signup",
-        formData, 
-        {
-          headers: { "Content-Type": "application/json" },
-    
-     
-        }
-      );
+      const res = await fetch("https://diabetes-detection-g9hw.vercel.app/api/v1/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-       console.log(res);
+
+             const data = await res.json();
+
+             console.log(data);
 
       if (res.ok) {
         setMessage("✅ Signup successful!");
